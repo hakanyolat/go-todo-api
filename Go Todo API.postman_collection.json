@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "d3cf3abb-07f2-448e-b8ee-12382f516e2a",
+		"name": "Go Todo API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Home",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{apiUrl}}",
+					"host": [
+						"{{apiUrl}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tasks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{apiUrl}}/tasks",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Task",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Test task\",\n\t\"completed\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiUrl}}/tasks",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Task",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{apiUrl}}/tasks/1",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"tasks",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Task",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"completed\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiUrl}}/tasks/1",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"tasks",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Task",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{apiUrl}}/tasks/1",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"tasks",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "02822e35-1d72-4136-81f6-0441fc08e87f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c07b7d9b-8694-490e-89bb-c1a1513eaa34",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "aac507b4-b1b6-467c-b251-cc453a575886",
+			"key": "apiUrl",
+			"value": "http://127.0.0.1:3000",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
