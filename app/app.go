@@ -9,7 +9,7 @@ import (
 )
 
 type App struct {
-	State        int
+	State        state
 	router       *Router
 	db           *gorm.DB
 	config       config.Config

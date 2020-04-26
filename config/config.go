@@ -22,7 +22,7 @@ func Get(env string) Config {
 	}
 
 	if err := godotenv.Load(path); err != nil {
-		panic("Error loading .env file.")
+		panic(fmt.Sprintf("Error loading .env file. \".env.%s\" not found.", strings.ToLower(env)))
 	}
 
 	return Config{

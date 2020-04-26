@@ -22,7 +22,7 @@ $ go mod vendor
 
 ### Configuration
 
-Configurations are defined in the ```.env``` file.
+Configurations are defined in the ```.env``` file(s).
 
 ```
 SERVER_HOST=127.0.0.1
@@ -35,6 +35,16 @@ DATABASE_USERNAME=admin
 DATABASE_PASSWORD=admin
 DATABASE_NAME=todoapi
 DATABASE_CHARSET=utf8
+```
+
+Instead of using the default ```.env``` file, you can run the application with the ```-env``` flag to use the ```env``` 
+file of the environment you specify. You can ask for help to see the possible env values.
+
+```bash
+$ go run main.go -h
+
+  -env string
+        The environment option for application. Possible values: local, dev, test, mock.
 ```
 
 Alternatively, you can set the environment value as in the example below.
