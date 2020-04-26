@@ -1,28 +1,36 @@
 package config
 
 import (
+	"fmt"
 	"github.com/joho/godotenv"
 	"os"
+	"strings"
 )
 
 type Config struct {
-	TCP *TCPConfig
-	DB  *DBConfig
+	TCP TCPConfig
+	DB  DBConfig
 }
 
-func GetConfig() *Config {
-	err := godotenv.Load("./.env")
+func Get(env string) Config {
+	var path string
 
-	if err != nil {
+	if env == ""{
+		path = "./.env"
+	}else{
+		path = fmt.Sprintf("./.env.%s", strings.ToLower(env))
+	}
+
+	if err := godotenv.Load(path); err != nil {
 		panic("Error loading .env file.")
 	}
 
-	return &Config{
-		TCP: &TCPConfig{
+	return Config{
+		TCP: TCPConfig{
 			Host: os.Getenv("SERVER_HOST"),
 			Port: os.Getenv("SERVER_PORT"),
 		},
-		DB: &DBConfig{
+		DB: DBConfig{
 			Dialect:  os.Getenv("DATABASE_DIALECT"),
 			Host:     os.Getenv("DATABASE_HOST"),
 			Port:     os.Getenv("DATABASE_PORT"),

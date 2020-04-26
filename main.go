@@ -3,15 +3,17 @@ package main
 import (
 	"github.com/hakanyolat/go-todo-api/app"
 	"github.com/hakanyolat/go-todo-api/config"
+	"github.com/hakanyolat/go-todo-api/model"
 	"github.com/hakanyolat/go-todo-api/service"
 )
 
 
 func main() {
-	configuration := config.GetConfig()
-	application := app.NewApp()
+	env := app.Env.Default
+	conf := config.Get(env)
 
-	application.Init(configuration)
-	application.Register(service.Registry...)
-	application.Run()
+	api := app.NewApp()
+	api.Configure(conf)
+	api.Init(model.Registry, service.Registry)
+	api.Run()
 }

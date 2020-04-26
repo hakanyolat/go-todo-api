@@ -1,13 +1,29 @@
 package app
 
 type state struct {
-	Idled   int
+	Created int
 	Ready   int
 	Running int
 }
 
-var ApplicationState = &state{
-	Idled:   0,
+type env struct {
+	Default string
+	Local   string
+	Dev     string
+	Test    string
+	Mock    string
+}
+
+var State = &state{
+	Created: 0,
 	Ready:   1,
 	Running: 2,
+}
+
+var Env = &env{
+	Default: "",
+	Local:   "local",
+	Dev:     "dev",
+	Test:    "test",
+	Mock:    "mock",
 }

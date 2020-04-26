@@ -7,7 +7,7 @@ import (
 )
 
 type ServiceInterface interface {
-	Register(r *Router, db *gorm.DB)
+	Init(r *Router, db *gorm.DB)
 	Provide()
 }
 
@@ -16,7 +16,7 @@ type Service struct {
 	DB     *gorm.DB
 }
 
-func (s *Service) Register(r *Router, db *gorm.DB) {
+func (s *Service) Init(r *Router, db *gorm.DB) {
 	s.Router = r
 	s.DB = db
 }
