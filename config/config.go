@@ -13,15 +13,19 @@ type Config struct {
 }
 
 func Get(env string) Config {
-	var path string
+	if os.Getenv("GOPATH") == "" {
+		panic("GOPATH not found in environment")
+	}
 
+	var path string
 	if env == ""{
 		path = "./.env"
 	}else{
 		path = fmt.Sprintf("./.env.%s", strings.ToLower(env))
 	}
 
-	if err := godotenv.Load(path); err != nil {
+	fullPath := fmt.Sprintf("$GOPATH/src/github.com/hakanyolat/go-todo-api/%s", path)
+	if err := godotenv.Load(os.ExpandEnv(fullPath)); err != nil {
 		panic(fmt.Sprintf("Error loading .env file. \".env.%s\" not found.", strings.ToLower(env)))
 	}
 
