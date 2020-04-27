@@ -54,6 +54,8 @@ $ export SERVER_HOST=localhost
 $ export SERVER_PORT=8080
 ```
 
+> Note: Make sure [GOPATH](https://github.com/golang/go/wiki/GOPATH) is present in your Environment values.
+
 ### Run
 
 ```bash

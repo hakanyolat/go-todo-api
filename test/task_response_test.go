@@ -2,9 +2,9 @@ package test
 
 import (
 	"encoding/json"
+	"github.com/hakanyolat/go-todo-api/app"
 	"github.com/hakanyolat/go-todo-api/model"
 	"github.com/hakanyolat/go-todo-api/model/response"
-	"github.com/jinzhu/gorm"
 	"reflect"
 	"testing"
 )
@@ -17,7 +17,7 @@ func TestTask_TaskResponse(t *testing.T) {
 	}
 
 	task := model.Task{
-		Model: gorm.Model{
+		Model: app.Model{
 			ID: 1,
 		},
 		Title:     "Test",
@@ -49,14 +49,14 @@ func TestTask_TasksResponse(t *testing.T) {
 
 	tasks := []model.Task{
 		{
-			Model: gorm.Model{
+			Model: app.Model{
 				ID: 1,
 			},
 			Title:     "Test",
 			Completed: false,
 		},
 		{
-			Model: gorm.Model{
+			Model: app.Model{
 				ID: 2,
 			},
 			Title:     "Test 2",

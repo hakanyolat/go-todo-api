@@ -123,6 +123,6 @@ func (a *App) Run() {
 	panic(http.ListenAndServe(host, handlers.CORS(originsOk, headersOk, methodsOk)(a.router.mux)))
 }
 
-func (a *App) GetDB() gorm.DB {
-	return *a.db
+func (a *App) GetDB() *gorm.DB {
+	return a.db
 }
