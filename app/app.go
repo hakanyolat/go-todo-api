@@ -16,6 +16,7 @@ type App struct {
 	services     []ServiceInterface
 	models       []ModelInterface
 	modelManager *ModelManager
+	isMock       bool
 }
 
 func NewApp() *App {
@@ -50,10 +51,13 @@ func (a *App) Init(tables []ModelInterface, services []ServiceInterface) {
 
 	a.db = db
 	a.State = State.Ready
-	a.modelManager = NewModelManager(a.db)
 
-	a.migrateModels()
-	a.seedModels()
+	if !a.isMock {
+		a.modelManager = NewModelManager(a.db)
+		a.migrateModels()
+		a.seedModels()
+	}
+
 	a.provideServices()
 }
 
@@ -125,4 +129,13 @@ func (a *App) Run() {
 
 func (a *App) GetDB() *gorm.DB {
 	return a.db
+}
+
+func (a *App) Mock() *App {
+	a.isMock = true
+	return a
+}
+
+func (a *App) IsMock() bool {
+	return a.isMock
 }

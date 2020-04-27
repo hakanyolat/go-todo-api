@@ -19,7 +19,7 @@ func TestMain(m *testing.M) {
 
 	_, Mock, _ = sqlmock.NewWithDSN(testConfig.DB.GetDSN())
 
-	testApp = app.NewApp()
+	testApp = app.NewApp().Mock()
 	testApp.Configure(testConfig)
 	testApp.Init(model.Registry, service.Registry)
 	os.Exit(m.Run())
